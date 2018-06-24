@@ -508,6 +508,7 @@
 								div1.id = "div" + i;
 								
 								div1.innerHTML = content[i].type;
+								div1.setAttribute("class", content[i].id);
 								div1.style.fontFamily = "Microsoft Yahei";
 								div1.style.color = "#77839c";
 								div1.style.lineHeight = "35px";
@@ -524,7 +525,9 @@
 							document.getElementById("div" + i).addEventListener("mouseout", function() {
 								this.style.background = "white";}
 							);
-							document.getElemtnById()
+							document.getElementById("div" + i).addEventListener("click", function() {
+								window.location.href = "plate.html?type=" + this.className;}
+							);
 						}
 					}
 				}

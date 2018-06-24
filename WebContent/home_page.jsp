@@ -1,7 +1,7 @@
 <%@page import="com.mysql.cj.x.protobuf.MysqlxSql.StmtExecute"%>
 <%@page import="com.mysql.cj.xdevapi.JsonArray"%>
 <%@page import="com.mysql.cj.protocol.Resultset"%>
-<%@page language="java" contentType="text/html;charset=utf-8" import = "java.util.*, java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*"%>
 <% request.setCharacterEncoding("utf-8");
    String msg = "";
    String connectString = "jdbc:mysql://localhost:3306/web_user?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
@@ -34,4 +34,7 @@
    catch(Exception e) {
 	   msg = e.getMessage();
    }
+   
+   
+   
 %>
