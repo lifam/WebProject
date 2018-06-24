@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+<style type="text/css">
+ 	body {
+ 		background:rgb(184,229,248);
+ 	}
+	.main {
+		position:relative;
+		margin:100px auto 0px auto;
+		height:500px;
+		width:450px;
+		border:1px solid white;
+		background-color:white;
+	}
+	.main_header {
+	    position:absolute;
+	    font-size:36px;
+	    color:#0084ff;
+	    text-align:center;
+	    font-family:Roboto;
+	    left:0;
+	    right:0;
+	    top:50px;
+	}
+	.messagesubmit {
+	    width:450px;
+	    height:180px;
+		position:relative;
+		margin:146px auto;
+		border:none;
+	}
+	.username, .password {
+	    position:absolute;
+		text-align:center;
+		left:0;
+		right:0;
+		height:40px;
+	}
+	.username input, .password input:nth-of-type(1) {
+		height:34px;
+		width:380px;
+		border:none;
+		border-bottom:1px solid #B0B0B0;
+	}
+	.username {
+		margin-top:30px;
+		color:rgb(133,144,166);
+	}
+	.password{
+		margin-top:110px;
+		color:rgb(133,144,166);
+	}
+	.login {
+		position:absolute;
+		width:350px;
+		height:40px;
+		left:50px;
+		bottom:90px;
+		border:none;
+		border-radius:4px;
+		color:white;
+		background-color:rgba(28,172,240,1);
+	}
+	.register {
+		position:relative;
+		border-top:1px solid rgba(246,246,246,1);
+		width:100%;
+		height:57px;
+		bottom:30px;
+		background-color:rgba(246,246,246,1);
+	}
+	.registera {
+		position:absolute;
+		text-align:center;
+		left:0;
+		right:0;
+		top:17px;
+		font-family:Roboto;
+		font-weight:bold;
+	}
+	.registera a {
+		text-decoration:none;
+	}
+</style>
+<body>
+	<div class = "content">
+		<div class = "main">
+			<div class = "main_header">
+				校园互助平台
+			</div>
+			<form class = "messagesubmit">
+				<div class = "username">
+					<input type = "text" placeholder = "用户名或邮箱">
+				</div>
+				<div class = "password">
+					<input type = "text" placeholder = "密码">
+				</div>
+			</form>
+			<input type = "submit" class = "login" value = "注册"></input>
+			<div class = "register">
+				<div class = "registera">
+					已有账号？<a href = "#">登录</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
