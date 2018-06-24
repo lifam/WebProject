@@ -57,8 +57,6 @@
 	}
 	.webheader-nav button {
 	    padding-top:2px;
-	    padding-left:10px;
-	    padding-right:10px;
 	    font-size:15px;
 	    line-height:30px;
 	    color:#8590a6;
@@ -67,11 +65,21 @@
 		border:none;
 		cursor:pointer;
 	}
+	.webheader-nav button:nth-of-type(1) {
+		margin-left:40px;
+	}
+	.webheader-nav button:nth-of-type(2) {
+		margin-left:20px;
+	}
+	.webheader-nav button:nth-of-type(3) {
+		margin-left:20px;
+	}
 	.search {
 		display:block;
 		position:relative;
 		font-size:15px;
 		color:#1a1a1a;
+		margin-left:65px;
 	}
 	.searchbutton {
 		cursor:pointer;
@@ -114,13 +122,77 @@
 		height:34px;
 	}
 	.button-notice {
-		margin-left:188px;
+		margin-left:110px;
 	}
 	.button-profile {
 		margin-left:34px;
 	}
 	.button-message {
 		margin-left:34px;
+	}
+	.notice_list, .message_list {
+		width:360px;
+		height:50px;
+		border:1px solid rgb(246, 246, 246);
+		background:white;
+		border-radius:4px;
+		z-index:300;
+		position:fixed;
+		margin-left:650px;
+		margin-top:-7px;
+		visibility:hidden;
+	}
+	.message_list {
+		margin-left:710px;
+	}
+	.profile_list {
+		width:120px;
+		height:84px;
+		border:1px solid rgb(246, 246, 246);
+		background:white;
+		border-radius:4px;
+		z-index:300;
+		position:fixed;
+		margin-left:908px;
+		margin-top:-7px;
+		visibility:hidden;
+		cursor:pointer;
+	}
+	.profile_list1, .profile_list2 {
+		width:120px;
+		height:35px;
+		border:none;
+		background:white;
+		margin-top:5px;
+		z-index:310;
+		position:fixed;
+		border-bottom:1px solid rgb(246, 246, 246);
+	}
+	.profile_list1 {
+		border-top:1px solid rgb(246, 246, 246);
+	}
+	.profile_list2 {
+		margin-top:42px;
+	}
+	.profile_list1 a, .profile_list2 a {
+		position:relative;
+		text-decoration:none;
+		padding-left:20px;
+		top:10px;
+		color:#77839c;
+	}
+	.plate_list {
+		width:150px;
+		border:1px solid rgb(246, 246, 246);
+		background:white;
+		border-radius:4px;
+		z-index:300;
+		position:fixed;
+		margin-left:99px;
+		margin-top:-7px;
+		padding-bottom:5px;
+		padding-top:5px;
+		visibility:hidden;
 	}
 	.button-notice, .button-message, .button-profile {
 		height:34px;
@@ -248,219 +320,107 @@
 </style>
 <script>
 	function notice_list() {
-		var notice_list = document.getElementById("notice_list"), message_list = document.getElementById("message_list"), profile_list = document.getElementById("profile_list");
-		var maincontent = document.getElementById("maincontent-header");
-		if(notice_list) {
-			maincontent.removeChild(notice_list);
+		var notice_list = document.getElementById("notice_list"), 
+			message_list = document.getElementById("message_list"), 
+			profile_list = document.getElementById("profile_list"),
+			plate_list = document.getElementById("plate_list");
+		if(getComputedStyle(notice_list).visibility == "visible") {
+	   		notice_list.style.visibility = "hidden";
 		}
 		else {
-			if(message_list)
-				maincontent.removeChild(message_list);
-			if(profile_list)
-				maincontent.removeChild(profile_list);
-			var div = document.createElement("div");
-			div.style.width = "360px";
-			div.style.height = "50px";
-			div.style.border = "1px solid rgb(246, 246, 246)";
-			div.style.background = "white";
-			div.style.borderRadius = "4px";
-			div.style.zIndex = "300";
-			div.style.position = "fixed";
-			div.style.marginLeft = "670px";
-			div.style.marginTop = "-7px";
-			div.id = "notice_list";
-			maincontent.appendChild(div);
+			if(getComputedStyle(message_list).visibility == "visible")
+		   		message_list.style.visibility = "hidden";
+		
+			if(getComputedStyle(profile_list).visibility == "visible")
+		   		profile_list.style.visibility = "hidden";
+		
+			if(getComputedStyle(plate_list).visibility == "visible")
+		   		plate_list.style.visibility = "hidden";
+		
+			notice_list.style.visibility = "visible";
 		}
 	}
 	function message_list() {
-		var notice_list = document.getElementById("notice_list"), message_list = document.getElementById("message_list"), profile_list = document.getElementById("profile_list");
-		var maincontent = document.getElementById("maincontent-header");
-		if(message_list) {
-			maincontent.removeChild(message_list);
+		var notice_list = document.getElementById("notice_list"), 
+			message_list = document.getElementById("message_list"), 
+			profile_list = document.getElementById("profile_list"),
+			plate_list = document.getElementById("plate_list");
+		
+		if(getComputedStyle(message_list).visibility == "visible") {
+		   	message_list.style.visibility = "hidden";
 		}
 		else {
-			if(notice_list)
-				maincontent.removeChild(notice_list);
-			if(profile_list)
-				maincontent.removeChild(profile_list);
-			var div = document.createElement("div");
-			div.style.width = "360px";
-			div.style.height = "50px";
-			div.style.border = "1px solid rgb(246, 246, 246)";
-			div.style.background = "white";
-			div.style.borderRadius = "4px";
-			div.style.zIndex = "300";
-			div.style.position = "fixed";
-			div.style.marginLeft = "730px";
-			div.style.marginTop = "-7px";
-			div.id = "message_list";
-			maincontent.appendChild(div);
+			if(getComputedStyle(notice_list).visibility == "visible")
+		   		notice_list.style.visibility = "hidden";
+			
+			if(getComputedStyle(profile_list).visibility == "visible")
+		  	 	profile_list.style.visibility = "hidden";
+			
+			if(getComputedStyle(plate_list).visibility == "visible")
+		   		plate_list.style.visibility = "hidden";
+			
+			message_list.style.visibility = "visible";
 		}
 	}
 	function profile_list() {
-		var notice_list = document.getElementById("notice_list"), message_list = document.getElementById("message_list"), profile_list = document.getElementById("profile_list");
-		var maincontent = document.getElementById("maincontent-header");
-		if(profile_list) {
-			maincontent.removeChild(profile_list);
+		var notice_list = document.getElementById("notice_list"), 
+			message_list = document.getElementById("message_list"), 
+			profile_list = document.getElementById("profile_list"),
+			plate_list = document.getElementById("plate_list");
+	
+		if(getComputedStyle(profile_list).visibility == "visible") {
+		 	profile_list.style.visibility = "hidden";
 		}
 		else {
-			if(notice_list)
-				maincontent.removeChild(notice_list);
-			if(message_list)
-				maincontent.removeChild(message_list);
-		
-			var div = document.createElement("div"), div1 = document.createElement("div"), div2 = document.createElement("div");
-			var a1 = document.createElement("a"), a2 = document.createElement("a");
-			div.style.width = "120px";
-			div.style.height = "85px";
-			div.style.border = "1px solid rgb(246, 246, 246)";
-			div.style.background = "white";
-			div.style.borderRadius = "4px";
-			div.style.zIndex = "300";
-			div.style.position = "fixed";
-			div.style.marginLeft = "915px";
-			div.style.marginTop = "-7px";
-			div.id = "profile_list";
+			if(getComputedStyle(notice_list).visibility == "visible")
+		   		notice_list.style.visibility = "hidden";
 			
-			div1.style.width = "120px";
-			div1.style.height = "35px";
-			div1.style.border = "none";
-			div1.style.background = "white";
-			div1.style.marginTop = "5px";
-			div1.style.zIndex = "310";
-			div1.style.position = "fixed";
-			div1.id = "profile_list1";
+			if(getComputedStyle(message_list).visibility == "visible")
+		   		message_list.style.visibility = "hidden";
+			
+			if(getComputedStyle(plate_list).visibility == "visible")
+		   		plate_list.style.visibility = "hidden";
+			
+			profile_list.style.visibility = "visible";
+		
+			var div1 = document.getElementById("profile_list1"),
+				div2 = document.getElementById("profile_list2");
+		
 			div1.addEventListener("mouseover", function() {
 				div1.style.background = "rgb(246, 246, 246)";
 			});
 			div1.addEventListener("mouseout", function() {
 				div1.style.background = "white";
 			});
-			
-			div2.style.width = "120px";
-			div2.style.height = "35px";
-			div2.style.border = "none";
-			div2.style.background = "white";
-			div2.style.marginTop = "42px";
-			div2.style.zIndex = "310";
-			div2.style.position = "fixed";
-			div2.id = "profile_list2";
+		
 			div2.addEventListener("mouseover", function() {
 				div2.style.background = "rgb(246, 246, 246)";
 			});
 			div2.addEventListener("mouseout", function() {
 				div2.style.background = "white";
 			});
-			
-			a1.style.position = "relative";
-			a1.style.textDecoration = "none";
-			a1.style.paddingLeft = "20px";
-			a1.href = "#";
-			a1.innerHTML = "<i class=\"fa fa-user\"></i>&nbsp;&nbsp;我的主页";
-			a1.style.top = "10px";
-			a1.style.color = "#77839c";
-
-			a2.style.position = "relative";
-			a2.style.textDecoration = "none";
-			a2.style.paddingLeft = "20px";
-			a2.href = "#";
-			a2.innerHTML = "<i class=\"fa fa-cog\"></i>&nbsp;&nbsp;设置</a>";
-			a2.style.top = "10px";
-			a2.style.color = "#77839c";
-			
-			div1.appendChild(a1);
-			div.appendChild(div1);
-			div2.appendChild(a2);	
-			div.appendChild(div2);
-		
-			maincontent.appendChild(div);
 		}
 	}
 	function plate_list() {
 		var notice_list = document.getElementById("notice_list"), 
 			message_list = document.getElementById("message_list"), 
-			profile_list = document.getElementById("profile_list")
+			profile_list = document.getElementById("profile_list"),
 			plate_list = document.getElementById("plate_list");
-		var maincontent = document.getElementById("maincontent-header");
-		if(plate_list) {
-			maincontent.removeChild(plate_list);
+	
+		if(getComputedStyle(plate_list).visibility == "visible") {
+			plate_list.style.visibility = "hidden";
 		}
 		else {
-			if(notice_list)
-				maincontent.removeChild(notice_list);
-			if(message_list)
-				maincontent.removeChild(message_list);
-			if(profile_list)
-				maincontent.removeChild(message_list);
-		
-			var div = document.createElement("div"), div1 = document.createElement("div"), div2 = document.createElement("div");
-			var a1 = document.createElement("a"), a2 = document.createElement("a");
-			div.style.width = "120px";
-			div.style.height = "83px";
-			div.style.border = "1px solid rgb(246, 246, 246)";
-			div.style.background = "white";
-			div.style.borderRadius = "4px";
-			div.style.zIndex = "300";
-			div.style.position = "fixed";
-			div.style.marginLeft = "105px";
-			div.style.marginTop = "-7px";
-			div.id = "plate_list";
+			if(getComputedStyle(notice_list).visibility == "visible")
+		   		notice_list.style.visibility = "hidden";
 			
-			div1.style.width = "120px";
-			div1.style.height = "35px";
-			div1.style.border = "none";
-			div1.style.background = "white";
-			div1.style.marginTop = "5px";
-			div1.style.zIndex = "310";
-			div1.style.position = "fixed";
-			div1.id = "plate_list1";
-			div1.style.borderTop = "1px solid rgb(246, 246, 246)";
-			div1.style.borderBottom = "1px solid rgb(246, 246, 246)";
-			div1.addEventListener("mouseover", function() {
-				div1.style.background = "rgb(246, 246, 246)";
-			});
-			div1.addEventListener("mouseout", function() {
-				div1.style.background = "white";
-			});
+			if(getComputedStyle(message_list).visibility == "visible")
+		   		message_list.style.visibility = "hidden";
 			
-			div2.style.width = "120px";
-			div2.style.height = "35px";
-			div2.style.border = "none";
-			div2.style.background = "white";
-			div2.style.marginTop = "42px";
-			div2.style.zIndex = "310";
-			div2.style.position = "fixed";
-			div2.id = "plate_list2";
-			div2.style.borderBottom = "1px solid rgb(246, 246, 246)";
-			div2.addEventListener("mouseover", function() {
-				div2.style.background = "rgb(246, 246, 246)";
-			});
-			div2.addEventListener("mouseout", function() {
-				div2.style.background = "white";
-			});
+			if(getComputedStyle(profile_list).visibility == "visible")
+		   		profile_list.style.visibility = "hidden";
 			
-			a1.style.position = "relative";
-			a1.style.textDecoration = "none";
-			a1.style.paddingLeft = "10px";
-			a1.href = "plate.html?type=0";
-			a1.innerHTML = "移动开发";
-			a1.style.top = "10px";
-			a1.style.color = "#77839c";
-
-			a2.style.position = "relative";
-			a2.style.textDecoration = "none";
-			a2.style.paddingLeft = "10px";
-			a2.href = "plate.html?type=1";
-			a2.innerHTML = "开发语言/框架";
-			a2.style.top = "10px";
-			a2.style.color = "#77839c";
-			
-			div1.appendChild(a1);
-			div.appendChild(div1);
-			div2.appendChild(a2);	
-			div.appendChild(div2);
-		
-			maincontent.appendChild(div);
+				plate_list.style.visibility = "visible";
 		}
 	}
 	function fresh() {
@@ -524,9 +484,58 @@
 		xmlhttp.open("get", "home_page.jsp", true);
 		xmlhttp.send();
 	}
+	function plate_fresh() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if(xmlhttp.readyState == 4) {
+				if(xmlhttp.status >= 200 && xmlhttp.status < 300 || xmlhttp.status == 304) {
+		 				var content = JSON.parse(xmlhttp.responseText),
+		 					plate_list = document.getElementById("plate_list");
+		 				var len = content.length;
+		 				for(var i = 0; i < len; i++) {
+							var div1 = document.createElement("div");
+								
+								div1.style.width = "150px";
+								div1.style.height = "35px";
+								div1.style.border = "none";
+								div1.style.background = "white";
+								div1.style.zIndex = "310";
+								div1.style.position = "relative";
+								if(i == 0)
+									div1.style.borderTop = "1px solid rgb(246, 246, 246)";
+								div1.style.borderBottom = "1px solid rgb(246, 246, 246)";
+								
+								div1.id = "div" + i;
+								
+								div1.innerHTML = content[i].type;
+								div1.style.fontFamily = "Microsoft Yahei";
+								div1.style.color = "#77839c";
+								div1.style.lineHeight = "35px";
+								div1.style.textAlign = "center";
+								div1.style.cursor = "pointer";
+								
+								plate_list.appendChild(div1);
+						}
+						
+						for(var i = 0; i < len; i++) {
+							document.getElementById("div" + i).addEventListener("mouseover", function() {
+								this.style.background = "rgb(246, 246, 246)";}
+							);
+							document.getElementById("div" + i).addEventListener("mouseout", function() {
+								this.style.background = "white";}
+							);
+							document.getElemtnById()
+						}
+					}
+				}
+			}
+			xmlhttp.open("post", "plate_choose.jsp", true);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send("action=1");
+	}
 </script>
 </head>
-<body onload = "fresh()">
+<body onload = "fresh(),plate_fresh()">
 <div id = "content" class = "content">
 	<div class = "webheader">
 		<div class = "webheader-inner">
@@ -535,7 +544,7 @@
 			</div>
 			<nav class = "webheader-nav">
 				<button>首页</button>
-				<button id = "plate" onclick = "plate_list()">板块</button>
+				<button id = "button-plate" onclick = "plate_list()">板块</button>
 				<button>精华帖</button>
 			</nav>
 			<div class = "search">
@@ -583,6 +592,18 @@
 						<p>论坛新帖</p>
 						<a href = "#">更多>></a>
 					</div>
+				</div>
+				<div id = "notice_list" class = "notice_list"></div>
+				<div id = "message_list" class = "message_list"></div>
+				<div id = "profile_list" class = "profile_list">
+					<div id = "profile_list1" class = "profile_list1">
+						<a href = "#"><i class="fa fa-user"></i>&nbsp;&nbsp;我的主页</a>
+					</div>
+					<div id = "profile_list2" class = "profile_list2">
+						<a href = "#"><i class="fa fa-cog"></i>&nbsp;&nbsp;设置</a>
+					</div>
+				</div>
+				<div id = "plate_list" class = "plate_list">
 				</div>
 		</div>
 	</div>
