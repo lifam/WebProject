@@ -17,23 +17,25 @@
 	  Statement stmt = con.createStatement();
 	   
 	  try {
+		  	
+		  
 	   		String sql = "select password_md5 from login where name = \"" + name + "\" or nickname = \"" + nickname + "\"";
 	   		ResultSet rs = stmt.executeQuery(sql);
 	   		
 	   		if(rs.next()) {}
 	   		else {
-		   		
+		   	
 		   		password_md5 = "";
 		   		MessageDigest md5 = MessageDigest.getInstance("md5");
 		   		md5.update(password.getBytes());
 		   		byte[] by = md5.digest();
 		   		for(int i = 0; i < by.length; i++)
-		   		    password_md5 += Byte.toString(by[i]);
-		   		  
+		   	    	password_md5 += Byte.toString(by[i]);
+		   	  
 		   		sql = "insert into login(name, password_md5, nickname) values('" + name + "', '" + password_md5 +"', '" + nickname + "')";
-		   		
+		   	
 		   		int cnt = stmt.executeUpdate(sql);
-		   			
+		   		
 		   		if(cnt > 0)
 		   			out.print("right");
 	   		}
