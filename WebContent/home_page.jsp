@@ -4,16 +4,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*"%>
 <% request.setCharacterEncoding("utf-8");
    String msg = "";
-   String connectString = "jdbc:mysql://localhost:3306/web_user?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
-   String user = "root";
-   String pwd = "password";
+   String connectString = "jdbc:mysql://172.18.187.234:53306/15336142?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
+   String user = "user";
+   String pwd = "123";
    
    try {	   
-	  Class.forName("com.mysql.cj.jdbc.Driver");
+	  Class.forName("com.mysql.jdbc.Driver");
 	  Connection con = DriverManager.getConnection(connectString, user, pwd);
 	  Statement stmt = con.createStatement();
 
-	  String sql = "select * from user_invitation where sign = \"new\" LIMIT 10";
+	  String sql = "select * from bbs where sign = \"1\" LIMIT 10";
 	  ResultSet rs = stmt.executeQuery(sql);
 	  String res = "[";
 	  while(rs.next()) {

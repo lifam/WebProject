@@ -2,9 +2,9 @@
 <%@ page import = "java.security.MessageDigest" %>
 <% request.setCharacterEncoding("utf-8");
    String msg = "";
-   String connectString = "jdbc:mysql://localhost:3306/web_user?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
-   String user = "root";
-   String pwd = "password";
+   String connectString = "jdbc:mysql://172.18.187.234:53306/15336142?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
+   String user = "user";
+   String pwd = "123";
    String name = request.getParameter("name");
    String password = request.getParameter("password");  
    String password_md5, warn = "";
@@ -18,12 +18,12 @@
 	  for(int i = 0; i < by.length; i++)
 	    	password_md5 += Byte.toString(by[i]);
 	   		
-	   		Class.forName("com.mysql.cj.jdbc.Driver");
+	   		Class.forName("com.mysql.jdbc.Driver");
 	   		Connection con = DriverManager.getConnection(connectString, user, pwd);
 	   		Statement stmt = con.createStatement();
 	   
 	  try {
-	   		String sql = "select password_md5 from user_info where name = \"" + name + "\"";
+	   		String sql = "select password_md5 from login where name = \"" + name + "\"";
 	   		ResultSet rs = stmt.executeQuery(sql);
 	   		
 	   		if(rs.next()) {
