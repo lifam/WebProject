@@ -7,7 +7,11 @@
 <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 <style type="text/css">
  	body {
- 		background:rgb(184,229,248);
+ 		background:url(img/sky.jpg) no-repeat center center fixed;
+ 		-webkit-background-size: cover;
+    	-moz-background-size: cover;
+    	-o-background-size: cover;
+   		background-size: cover;
  	}
 	.main {
 		position:relative;
@@ -34,26 +38,67 @@
 		margin:146px auto;
 		border:none;
 	}
-	.username, .password {
+	.username, .password, .nickname {
 	    position:absolute;
 		text-align:center;
 		left:0;
 		right:0;
 		height:40px;
 	}
-	.username input, .password input:nth-of-type(1) {
+	.username input, .password input, .nickname input {
 		height:34px;
 		width:380px;
 		border:none;
 		border-bottom:1px solid #B0B0B0;
 	}
 	.username {
-		margin-top:30px;
+		margin-top:10px;
 		color:rgb(133,144,166);
 	}
 	.password{
-		margin-top:110px;
+		margin-top:80px;
 		color:rgb(133,144,166);
+	}
+	.nickname {
+		margin-top:150px;
+		color:rgb(133,144,166);
+	}
+	.tips {
+		position:relative;
+		z-index:300;
+		width:120px;
+		height:30px;
+		line-height:34px;
+		top:150px;
+		text-align:center;
+		left:293px;
+		font-size:14px;
+		color:red;
+		background:white;
+		visibility:hidden;
+	}
+	.button-switch {
+	    position:absolute;
+		background:red;
+		width:30px;
+		height:36px;
+		right:2px;
+		background:transparent;
+		border:none;
+		cursor:pointer;
+	}
+	i {
+	 	color:rgb(133,144,166);
+	}
+	.forget {
+		position:absolute;
+		bottom:160px;
+		left:350px;
+	}
+	.forget a {
+		font-family:Roboto;
+		text-decoration:none;
+		color:#B0B0B0;
 	}
 	.login {
 		position:absolute;
@@ -86,25 +131,149 @@
 	.registera a {
 		text-decoration:none;
 	}
+	#name.change::-webkit-input-placeholder {
+		color:red;
+	}
+	#password.change::-webkit-input-placeholder {
+		color:red;
+	}
+	#name.origin::-webkit-input-placeholder {
+		color:gray;
+	}
+	#password.origin::-webkit-input-placeholder {
+		color:gray;
+	}
+	#nickname.change::-webkit-input-placeholder {
+		color:red;
+	}
+	#nickname.origin::-webkit-input-placeholder {
+		color:gray;
+	}
 </style>
+<script type="text/javascript">
+function pwd_text() {
+	var button = document.getElementById("button-switch"), pwd = document.getElementById("password");
+	if(button.innerHTML.match("fa-eye-slash")) {
+		button.innerHTML = "<i class= \"fa fa-eye\"></i>";
+		pwd.type = "password";
+	}
+	else {
+		button.innerHTML = "<i class= \"fa fa-eye-slash\"></i>";
+		pwd.type = "text";
+	}
+}
+function n_lose_focus() {
+	var t1 = document.getElementById("name");
+	if(t1.value == "") {
+		t1.setAttribute("class", "change");
+		t1.setAttribute("placeholder", "请输入账号或邮箱");
+	}
+}
+function n_get_focus() {
+	var t1 = document.getElementById("name");
+	var tips = document.getElementById("tips");
+	tips.style.visibility = "hidden";
+	if(t1.value == "") {
+		t1.setAttribute("class", "origin");
+		t1.setAttribute("placeholder", "用户名或邮箱");
+	}
+}
+function p_lose_focus() {
+	var t2 = document.getElementById("password");
+	if(t2.value == "") {
+		t2.setAttribute("class", "change");
+		t2.setAttribute("placeholder", "请输入密码");
+	}
+}
+function p_get_focus() {
+	var t2 = document.getElementById("password");
+	var tips = document.getElementById("tips");
+	tips.style.visibility = "hidden";
+	if(t2.value == "") {
+		t2.setAttribute("class", "origin");
+		t2.setAttribute("placeholder", "密码");
+	}
+}
+function c_lose_focus() {
+	var t3 = document.getElementById("nickname");
+	if(t3.value == "") {
+		t3.setAttribute("class", "change");
+		t3.setAttribute("placeholder", "请输入昵称");
+	}
+}
+function c_get_focus() {
+	var t3 = document.getElementById("nickname");
+	var tips = document.getElementById("tips");
+	tips.style.visibility = "hidden";
+	if(t3.value == "") {
+		t3.setAttribute("class", "origin");
+		t3.setAttribute("placeholder", "昵称");
+	}
+}
+function submit() {
+	var t1 = document.getElementById("name"), t2 = document.getElementById("password"), t3 = document.getElementById("nickname");
+	
+	if(t1.value == "" || t2.value == "" || t3.value == "") {
+		if(t1.value == "") {
+			t1.setAttribute("class", "change");
+			t1.setAttribute("placeholder", "请输入账号或邮箱");
+		}
+		if(t2.value == "") {
+			t2.setAttribute("class", "change");
+			t2.setAttribute("placeholder", "请输入密码");
+		}
+		if(t3.value == "") {
+			t3.setAttribute("class", "change");
+			t3.setAttribute("placeholder", "请输入昵称");
+		}
+	}
+	else {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			
+			if(xmlhttp.readyState == 4) {
+				if(xmlhttp.status >= 200 && xmlhttp.status < 300 || xmlhttp.status >= 304) {
+					var result = xmlhttp.responseText;
+					if(result.indexOf("right") >= 0) {
+						window.location.href = "home_page.html";
+					}
+					else {
+						var tips = document.getElementById("tips");
+						tips.style.visibility = "visible";
+					}
+				}
+			}
+		}
+		var search = "name=" + t1.value + "&password=" + t2.value + "&nickname=" + t3.value;
+		xmlhttp.open("post", "register.jsp", true);
+		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xmlhttp.send(search);
+	}
+}
+</script>
 <body>
 	<div class = "content">
 		<div class = "main">
 			<div class = "main_header">
-				校园互助平台
+				BBS技术论坛
 			</div>
-			<form class = "messagesubmit">
+			<form class = "messagesubmit" name = "messagesubmit" class = "messagesubmit">
 				<div class = "username">
-					<input type = "text" placeholder = "用户名或邮箱">
+					<input id = "name" name = "name" type = "text" placeholder = "用户名或邮箱" onblur = "n_lose_focus()" onfocus = "n_get_focus()"/>
 				</div>
 				<div class = "password">
-					<input type = "text" placeholder = "密码">
+					<input name = "password" id = "password" type = "password" placeholder = "密码" onblur = "p_lose_focus()" onfocus = "p_get_focus()"/>
+					<button id = "button-switch" class = "button-switch" onclick = "pwd_text()"><i class= "fa fa-eye"></i></button>
 				</div>
+				<div class = "nickname">
+					<input name = "nickname" id = "nickname" type = "text" placeholder = "昵称" onblur = "c_lose_focus()" onfocus = "c_get_focus()"/>
+				</div>
+				<div id = "tips" class = "tips">账号或昵称已存在</div>
 			</form>
-			<input type = "submit" class = "login" value = "注册"></input>
+			<input id = "button" type = "button" class = "login" value = "注册" onclick = "submit()"></input>
 			<div class = "register">
 				<div class = "registera">
-					已有账号？<a href = "#">登录</a>
+					已有账号？<a href = "login.html">登录</a>
 				</div>
 			</div>
 		</div>

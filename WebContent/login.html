@@ -6,7 +6,11 @@
 <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 <style type="text/css">
  	body {
- 		background:rgb(184,229,248);
+ 		background:url(img/sky.jpg) no-repeat center center fixed;
+ 		-webkit-background-size: cover;
+    	-moz-background-size: cover;
+    	-o-background-size: cover;
+   		background-size: cover;
  	}
 	.main {
 		position:relative;
@@ -206,7 +210,7 @@ function submit() {
 	<div class = "content">
 		<div class = "main">
 			<div class = "main_header">
-				校园互助平台
+				BBS技术论坛
 			</div>
 			<form id = "messagesubmit" name = "messqgesubmit" class = "messagesubmit">
 				<div class = "username">
@@ -224,7 +228,7 @@ function submit() {
 			<input id = "button" type = "button" class = "login" value = "登录" onclick = "submit()"/>
 			<div class = "register">
 				<div class = "registera">
-					没有账号？<a href = "#">注册</a>
+					没有账号？<a href = "register.html">注册</a>
 				</div>
 			</div>
 		</div>

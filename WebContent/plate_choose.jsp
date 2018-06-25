@@ -2,23 +2,23 @@
 <%@ page import = "java.util.*, java.sql.*"%>
 <% request.setCharacterEncoding("utf-8");
    String msg = "";
-   String connectString = "jdbc:mysql://localhost:3306/web_user?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
-   String user = "root";
-   String pwd = "password";
+   String connectString = "jdbc:mysql://172.18.187.234:53306/15336142?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
+   String user = "user";
+   String pwd = "123";
    
    try {	   
-	  	Class.forName("com.mysql.cj.jdbc.Driver");
+	  	Class.forName("com.mysql.jdbc.Driver");
 	  	Connection con = DriverManager.getConnection(connectString, user, pwd);
 	  	Statement stmt = con.createStatement();
 	  	String sql = "";
 		
 	  	if(request.getParameter("type") != null) {
-	  		sql = "select * from user_invitation where type in (select type from type_id where id = " + request.getParameter("type") + ")";
+	  		sql = "select * from bbs where type in (select type from type where type_id = " + request.getParameter("type") + ")";
 	  	}
 	  	else if(request.getParameter("action") != null) {
-	  		sql = "select * from type_id";
+	  		sql = "select * from type";
 	  	}
-	  	
+
 	  	ResultSet rs = stmt.executeQuery(sql);
 	  	
 	  	String res = "[";
@@ -31,7 +31,7 @@
 	  					      "\"date\":\"" + rs.getString("date") + "\"},";
 	        else if(request.getParameter("action") != null)
 	        	res += "{" +  "\"type\":\"" + rs.getString("type") + "\"," +
-	        				  "\"id\":\"" + rs.getString("id") + "\"},";
+	        				  "\"type_id\":\"" + rs.getString("type_id") + "\"},";
 	  	}
 	  	res = res.substring(0, res.length() - 1);
 	  	res += "]";
