@@ -1,13 +1,14 @@
 <%@page import="com.mysql.cj.x.protobuf.MysqlxSql.StmtExecute"%>
 <%@page import="com.mysql.cj.xdevapi.JsonArray"%>
 <%@page import="com.mysql.cj.protocol.Resultset"%>
-<%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*,java.net.*,javax.servlet.http.Cookie"%>
 <% request.setCharacterEncoding("utf-8");
    String msg = "";
    String connectString = "jdbc:mysql://172.18.187.234:53306/15336142?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
    String user = "user";
    String pwd = "123";
-   
+   String name = request.getParameter("name");
+
    try {	   
 	  Class.forName("com.mysql.jdbc.Driver");
 	  Connection con = DriverManager.getConnection(connectString, user, pwd);
@@ -34,7 +35,4 @@
    catch(Exception e) {
 	   msg = e.getMessage();
    }
-   
-   
-   
 %>

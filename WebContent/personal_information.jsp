@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*,java.io.*"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*,java.io.*,java.net.*"%>
 <%@ page import = "java.security.MessageDigest" %>
 <%!// 读取http请求的正文并转化为字符串。
  String getRequestBody(HttpServletRequest request)throws Exception{
@@ -75,9 +75,17 @@
    String connectString = "jdbc:mysql://172.18.187.234:53306/15336142?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
    String user = "user";
    String pwd = "123";
-   String name = "12345678";//request.getParameter("name");
+   String name = "";
+   Cookie[] cookies = request.getCookies();
+   String nickname = "";
+   for(Cookie cookie:cookies){
+   		if(cookie.getName().equals("name"))
+   		{
+   			name = cookie.getValue();
+   		}
+	}
+
    String password = request.getParameter("password"); 
-   String nickname = request.getParameter("nickname");
    String password_md5, warn = "";
    String sex = "";
    String description = "";
@@ -123,6 +131,7 @@
 	  		ResultSet rs = stmt.executeQuery(sql);
 
 	  		if(rs.next()){
+	  			nickname = rs.getString("nickname");
 	  			sex = rs.getString("sex");
 	  			description = rs.getString("description");
 	  			major = rs.getString("major");

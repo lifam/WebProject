@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>个人主页</title>
 <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
 <style type = "text/css">
 	* {
@@ -350,7 +350,7 @@
 			a1.style.textDecoration = "none";
 			a1.style.paddingLeft = "20px";
 			a1.href = "#";
-			a1.innerHTML = "<i class=\"fa fa-user\"></i>&nbsp;&nbsp;我的主页";
+			a1.innerHTML = "<i class=\"fa fa-user\"></i>&nbsp;&nbsp;登陆/注册";
 			a1.style.top = "10px";
 			a1.style.color = "#77839c";
 
@@ -358,7 +358,7 @@
 			a2.style.textDecoration = "none";
 			a2.style.paddingLeft = "20px";
 			a2.href = "#";
-			a2.innerHTML = "<i class=\"fa fa-cog\"></i>&nbsp;&nbsp;设置</a>";
+			a2.innerHTML = "<i class=\"fa fa-cog\"></i>&nbsp;&nbsp;我的主页</a>";
 			a2.style.top = "10px";
 			a2.style.color = "#77839c";
 			

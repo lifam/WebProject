@@ -1,5 +1,5 @@
 
-<%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*,javax.servlet.http.Cookie"%>
 <%@ page import = "java.security.MessageDigest" %>
 <% request.setCharacterEncoding("utf-8");
    String msg = "";
@@ -30,7 +30,19 @@
 	   		if(rs.next()) {
 	   			
 		   		if(password_md5.matches(rs.getString("password_md5")))
+		   		{
 		   			out.print("right");
+		   			Cookie[] cookies = request.getCookies();
+		   			for(Cookie cookie:cookies)
+		   			{
+		   				cookie.setMaxAge(0);
+		   				response.addCookie(cookie);
+
+		   			}
+		   			Cookie cookie = new Cookie("name", name);
+		   			cookie.setMaxAge(3600);
+		   			response.addCookie(cookie);
+		   		}	
 	   		}
 
 		}

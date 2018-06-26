@@ -33,11 +33,29 @@
 		   	    	password_md5 += Byte.toString(by[i]);
 		   	  
 		   		sql = "insert into login(name, password_md5, nickname) values('" + name + "', '" + password_md5 +"', '" + nickname + "')";
-		   	
-		   		int cnt = stmt.executeUpdate(sql);
 		   		
-		   		if(cnt > 0)
+		   		String fmt = "insert into personal_info(name,nickname,sex,focus,fans) values('%s','%s','male','0','0')";
+
+				int cnt = stmt.executeUpdate(sql);
+
+				sql = String.format(fmt,name,nickname);
+
+		   		int cnt2 = stmt.executeUpdate(sql);
+
+		   		if(cnt > 0 && cnt2 > 0)
 		   			out.print("right");
+		   		else
+		   			out.print("false");
+
+		   		Cookie[] cookies = request.getCookies();
+		   		for(Cookie cookie:cookies)
+		   		{
+		   			cookie.setMaxAge(0);
+		   			response.addCookie(cookie);
+		   		}
+		   		Cookie cookie = new Cookie("name", name);
+		   		cookie.setMaxAge(3600);
+		   		response.addCookie(cookie);
 	   		}
 	   		stmt.close();
 	   		con.close();
