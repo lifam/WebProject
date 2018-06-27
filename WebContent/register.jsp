@@ -8,7 +8,7 @@
 <div class = "content">
 		<div class = "reg_main">
 			<div class = "main_header">
-				BBS技术论坛
+				Movie Circle
 			</div>
 			<form class = "messagesubmit" name = "messagesubmit" class = "messagesubmit">
 				<div class = "reg_username">
@@ -31,6 +31,7 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="frame/footer.jsp"></jsp:include>
 </body>
 </html>
 

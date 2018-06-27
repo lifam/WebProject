@@ -31,16 +31,25 @@
    Connection con = DriverManager.getConnection(connectString, user, pwd);
    Statement stmt = con.createStatement();
 
+   	//获取nickname
+   	try {
+	  	String sql = "SELECT * FROM personal_info where name = \"" + name + "\"";
+	  	ResultSet rs = stmt.executeQuery(sql);
+	  	if(rs.next()){
+	  		nickname = rs.getString("nickname");
+	  	}
+	}catch(Exception e) {
+	   	msg = e.getMessage();
+	}
+
 
 	if(request.getMethod().equalsIgnoreCase("post")){
-
 		try{
 		  String fmt="insert into bbs(nickname,title,content) values('%s','%s','%s')";
 		  title = request.getParameter("title");
 		  content = request.getParameter("content");
 		  String sql = String.format(fmt,nickname,title,content);
 		  int cnt = stmt.executeUpdate(sql);
-
 		  stmt.close();
 		  con.close();
 		}
@@ -48,23 +57,6 @@
 			msg = e.getMessage();
 		}
 	  }
-	  else{
-	  try {
-	  		String sql = "SELECT * FROM personal_info where name = \"" + name + "\"";
-	  		ResultSet rs = stmt.executeQuery(sql);
-
-	  		if(rs.next()){
-	  			nickname = rs.getString("nickname");
-
-	  		}
-
-
-		}
-	 	catch(Exception e) {
-	   		msg = e.getMessage();
-	   	}
-	  }
-
 %>
 
 <jsp:include page="frame/head.jsp"></jsp:include>
@@ -79,24 +71,12 @@
 	  </div>
 	  	<div class = "ui divider" style="margin-top:40px">
 	  	</div>
-	  <form action="page.jsp" method="post">
+	  <form action="write.jsp" method="post">
 	  	<h3 class = "ui header">标题</h3>
 	  		<div class="ui input foucs" style= "width:80rem">
   				<input type="text" name="title" placeholder="标题"> 
 			</div>
 	  		<h3 class = "ui header">内容</h3>
-<!-- 		<div class="ui icon buttons">
-  			<button class="ui button"><i class="align left icon"></i></button>
-  			<button class="ui button"><i class="align center icon"></i></button>
-  			<button class="ui button"><i class="align right icon"></i></button>
-  			<button class="ui button"><i class="align justify icon"></i></button>
-		</div>
-		<div class="ui icon buttons">
-  			<button class="ui button"><i class="bold icon"></i></button>
-  			<button class="ui button"><i class="underline icon"></i></button>
-  			<button class="ui button"><i class="text width icon"></i></button>
-		</div> -->
-<!-- 		<div class = "field" style="margin-top:20px"> -->
 			<style>
 			textarea{
 				width:80rem;
@@ -106,13 +86,8 @@
 		    <div class="field">
 			 	<textarea name="content"></textarea>
 			</div>
-<!-- 		</div> -->
-
-
 		<button type="submit" class="ui primary button" style="margin-top:10px;margin-bottom:50px" ><i class="icon edit"></i>发帖</button>
-<!-- 		<button class="ui  button" style="margin-top:10px;margin-bottom:20px;" ><i class="folder  icon"></i>保存草稿</button>
-		<button class="ui  button" style="margin-top:10px;margin-bottom:20px;" ><i class="unhide icon"></i>预览</button>
-		<button class="ui  button" style="margin-top:10px;margin-bottom:20px;" ><i class="remove icon"></i>取消</button> -->
 	</form>
 </div>
+<jsp:include page="frame/footer.jsp"></jsp:include>
 </body>

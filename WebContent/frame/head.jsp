@@ -62,7 +62,7 @@
     }
     </style>
 </head>
-<body>
+<body style="background:url(img/background.jpg) no-repeat center center fixed">
     <div class="ui inverted large head main menu ">
         <div class="ui  container">
             <div class="header item"><i class= "lemon icon"></i>Movie Circle</div>

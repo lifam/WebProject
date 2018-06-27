@@ -144,5 +144,6 @@
         </div>
     </div>
   </div>
+  <jsp:include page="frame/footer.jsp"></jsp:include>
 </body>
 </html>

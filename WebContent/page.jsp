@@ -95,7 +95,7 @@
 
 <jsp:include page="frame/head.jsp"></jsp:include>
 
-	<div class = "ui main container">
+	<div class = "ui main container" style="margin-bottom:60px">
 		<!-- 帖子主题 -->
       <div class="ui breadcrumb">
         <a class="section" href = "index.jsp"> 返回 </a>
@@ -123,11 +123,11 @@
             <div id="comment-list">
                 <%=table%>
             </div>
- 		 </div>
+ 		</div>
       <%if(name!=""){%>
   		<form action="<%=url%>" method ="post" id = "comment-form" class="ui reply form">
       <%}else{%>
-      <form action="login.jsp" method="post" class ="ui reply form">
+      	<form action="login.jsp" method="post" class ="ui reply form">
       <%}%>
           <input type="hidden" name="article">
     		    <div class="field" style="width:80rem">                
@@ -135,8 +135,8 @@
     		    </div>
     		<button id="comment-commit"  class="ui blue labeled submit icon button"><i class="icon edit"></i>回复</button>
   		</form>
-</div>
+  </div>
 
-	</div>
+<jsp:include page="frame/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -59,7 +59,7 @@ function submit() {
 		}
 	}
 	var search = "name=" + document.getElementById("name").value + "&password=" + document.getElementById("password").value;
-	xmlhttp.open("post", "frame\\loginserver.jsp", true);
+	xmlhttp.open("post", "loginserver.jsp", true);
 	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xmlhttp.send(search);
 }

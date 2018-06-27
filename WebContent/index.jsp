@@ -3,17 +3,24 @@
 <%@page import="com.mysql.cj.protocol.Resultset"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*,java.net.*,javax.servlet.http.Cookie"%>
 <% request.setCharacterEncoding("utf-8");
+    
+
+   //数据库信息
    String msg = "";
    String connectString = "jdbc:mysql://172.18.187.234:53306/15336142?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
    String user = "user";
    String pwd = "123";
    String name = "";
-   Cookie[] cookies = request.getCookies();
+   
    StringBuilder table = new StringBuilder("");
    String str1 = "<div class = \"ui styled fluid accordion\"><div class=\"title\"><i class=\"dropdown icon\"></i>";
    String str2 = "</div><div class=\"content\"><p class = \"transition hidden\">";
    String fmt = "</p><p class = \"transition hidden\"><a href = \"page.jsp?uid=%s\">进入</a></p></div></div>";
    String str3 = "";
+
+
+   
+   Cookie[] cookies = request.getCookies();
    for(Cookie cookie:cookies){
       if(cookie.getName().equals("name"))
       {
@@ -49,7 +56,7 @@
 <jsp:include page="frame/head.jsp"></jsp:include>
 
 
-  <div class ="ui main container"  style="background-image:url("img/background.jpg");">
+  <div class ="ui main container" >
 	<div class = "ui grid">
     <% if(name!=""){ %>
       <a  href="write.jsp" class="ui primary button" style="margin-top:10px;margin-left:75rem;width:100px;font:white" ><i class="write icon"></i>发帖</a>
@@ -61,7 +68,8 @@
     <%=table%>
 </div>
 
-</body>
+<jsp:include page="frame/footer.jsp"></jsp:include>
 
 </body>
+
 </html>

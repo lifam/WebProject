@@ -7,11 +7,11 @@
 <link rel="stylesheet" type="text/css" href="css/login.css">
 <script src="js/loginjs.js"></script>
 
-<body>
+<body style="background-image:url(img/background.jpg);">
 	<div class = "content">
 		<div class = "login_main">
 			<div class = "login_main_header">
-				BBS技术论坛
+				Movie Circle
 			</div>
 			<form id = "messagesubmit" name = "messqgesubmit" class = "login_messagesubmit" method="post">
 				<div class = "login_username">
@@ -34,5 +34,7 @@
 			</div>
 		</div>
 	</div>
+<jsp:include page="frame/footer.jsp"></jsp:include>
 </body>
+
 </html>
