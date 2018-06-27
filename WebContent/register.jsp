@@ -1,68 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*"%>
 <%@ page import = "java.security.MessageDigest" %>
-<% request.setCharacterEncoding("utf-8");
-   String msg = "";
-   String connectString = "jdbc:mysql://172.18.187.234:53306/15336142?characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC";
-   String user = "user";
-   String pwd = "123";
-   String name = request.getParameter("name");
-   String password = request.getParameter("password"); 
-   String nickname = request.getParameter("nickname");
-   String password_md5, warn = "";
-   
-   if(request.getMethod().equalsIgnoreCase("post")) {
-	   		
-	  Class.forName("com.mysql.jdbc.Driver");
-	  Connection con = DriverManager.getConnection(connectString, user, pwd);
-	  Statement stmt = con.createStatement();
-	   
-	  try {
-		  	
-		  
-	   		String sql = "select password_md5 from login where name = \"" + name + "\" or nickname = \"" + nickname + "\"";
-	   		ResultSet rs = stmt.executeQuery(sql);
-	   		
-	   		if(rs.next()) {}
-	   		else {
-		   	
-		   		password_md5 = "";
-		   		MessageDigest md5 = MessageDigest.getInstance("md5");
-		   		md5.update(password.getBytes());
-		   		byte[] by = md5.digest();
-		   		for(int i = 0; i < by.length; i++)
-		   	    	password_md5 += Byte.toString(by[i]);
-		   	  
-		   		sql = "insert into login(name, password_md5, nickname) values('" + name + "', '" + password_md5 +"', '" + nickname + "')";
-		   		
-		   		String fmt = "insert into personal_info(name,nickname,sex,focus,fans) values('%s','%s','male','0','0')";
+<link rel="stylesheet" type="text/css" href="css/register.css">
+<script src="js/register.js"></script>
 
-				int cnt = stmt.executeUpdate(sql);
 
-				sql = String.format(fmt,name,nickname);
+<jsp:include page="frame/head.jsp"></jsp:include>
+<div class = "content">
+		<div class = "reg_main">
+			<div class = "main_header">
+				BBS技术论坛
+			</div>
+			<form class = "messagesubmit" name = "messagesubmit" class = "messagesubmit">
+				<div class = "reg_username">
+					<input id = "name" name = "name" type = "text" placeholder = "用户名或邮箱" onblur = "n_lose_focus()" onfocus = "n_get_focus()"/>
+				</div>
+				<div class = "reg_password">
+					<input name = "password" id = "password" type = "password" placeholder = "密码" onblur = "p_lose_focus()" onfocus = "p_get_focus()"/>
+					<button id = "button-switch" class = "button-switch" onclick = "pwd_text()"><i class= "fa fa-eye"></i></button>
+				</div>
+				<div class = "nickname">
+					<input name = "nickname" id = "nickname" type = "text" placeholder = "昵称" onblur = "c_lose_focus()" onfocus = "c_get_focus()"/>
+				</div>
+				<div id = "tips" class = "tips">账号或昵称已存在</div>
+			</form>
+			<input id = "button" type = "button" class = "login" value = "注册" onclick = "submit()"></input>
+			<div class = "register">
+				<div class = "registera">
+					已有账号？<a href = "login.jsp">登录</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
 
-		   		int cnt2 = stmt.executeUpdate(sql);
-
-		   		if(cnt > 0 && cnt2 > 0)
-		   			out.print("right");
-		   		else
-		   			out.print("false");
-
-		   		Cookie[] cookies = request.getCookies();
-		   		for(Cookie cookie:cookies)
-		   		{
-		   			cookie.setMaxAge(0);
-		   			response.addCookie(cookie);
-		   		}
-		   		Cookie cookie = new Cookie("name", name);
-		   		cookie.setMaxAge(3600);
-		   		response.addCookie(cookie);
-	   		}
-	   		stmt.close();
-	   		con.close();
-
-		}
-	 	catch(Exception e) {
-	   		msg = e.getMessage();
-	   	}
-   }
-%>

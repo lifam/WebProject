@@ -1,0 +1,134 @@
+
+ 	.login_body {
+ 		background:url(img/sky.jpg) no-repeat center center fixed;
+ 		-webkit-background-size: cover;
+    	-moz-background-size: cover;
+    	-o-background-size: cover;
+   		background-size: cover;
+ 	}
+	.login_main {
+		position:relative;
+		margin:100px auto 0px auto;
+		height:500px;
+		width:450px;
+		border:1px solid white;
+		background-color:white;
+	}
+	.login_main_header {
+	    position:absolute;
+	    font-size:36px;
+	    color:#0084ff;
+	    text-align:center;
+	    font-family:Roboto;
+	    left:0;
+	    right:0;
+	    top:50px;
+	}
+	.login_messagesubmit {
+	    width:450px;
+	    height:180px;
+		position:relative;
+		margin:146px auto;
+		border:none;
+	}
+	.login_username, .login_password {
+	    position:absolute;
+		text-align:center;
+		left:0;
+		right:0;
+		height:40px;
+	}
+	.login_username input, .login_password input:nth-of-type(1) {
+		height:34px;
+		width:380px;
+		border:none;
+		border-bottom:1px solid #B0B0B0;
+	}
+	.login_username {
+		margin-top:30px;
+		color:rgb(133,144,166);
+	}
+	.login_password{
+		margin-top:110px;
+		color:rgb(133,144,166);
+	}
+	.login_tips {
+		position:relative;
+		z-index:300;
+		width:100px;
+		height:30px;
+		line-height:34px;
+		top:110px;
+		text-align:center;
+		left:313px;
+		font-size:14px;
+		color:red;
+		background:white;
+		visibility:hidden;
+	}
+	.login_button-switch {
+	    position:absolute;
+		background:red;
+		width:30px;
+		height:36px;
+		right:2px;
+		background:transparent;
+		border:none;
+		cursor:pointer;
+	}
+	i {
+	 	color:rgb(133,144,166);
+	}
+	.login_forget {
+		position:absolute;
+		bottom:160px;
+		left:350px;
+	}
+	.login_forget a {
+		font-family:Roboto;
+		text-decoration:none;
+		color:#B0B0B0;
+	}
+	.login_login {
+		position:absolute;
+		width:350px;
+		height:40px;
+		left:50px;
+		bottom:90px;
+		border:none;
+		border-radius:4px;
+		color:white;
+		background-color:rgba(28,172,240,1);
+	}
+	.login_register {
+		position:relative;
+		border-top:1px solid rgba(246,246,246,1);
+		width:100%;
+		height:57px;
+		bottom:30px;
+		background-color:rgba(246,246,246,1);
+	}
+	.login_registera {
+		position:absolute;
+		text-align:center;
+		left:0;
+		right:0;
+		top:17px;
+		font-family:Roboto;
+		font-weight:bold;
+	}
+	.login_registera a {
+		text-decoration:none;
+	}
+	#name.change::-webkit-input-placeholder {
+		color:red;
+	}
+	#password.change::-webkit-input-placeholder {
+		color:red;
+	}
+	#name.origin::-webkit-input-placeholder {
+		color:gray;
+	}
+	#password.origin::-webkit-input-placeholder {
+		color:gray;
+	}
