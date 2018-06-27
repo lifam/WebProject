@@ -38,8 +38,7 @@
 <html>
 <meta charset="utf-8">
 <head>
-    <title>Technique BBS!</title>
-    <link rel="icon" href="/LemonApp/media/logo.jpg"  type="image/jpg">
+    <title>Movie Circle!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/semantic.css">
@@ -66,7 +65,7 @@
 <body>
     <div class="ui inverted large head main menu ">
         <div class="ui  container">
-            <div class="header item"><i class= "lemon icon"></i>Technique BBS</div>
+            <div class="header item"><i class= "lemon icon"></i>Movie Circle</div>
             <a href="index.jsp" class="item">主页</a>
             <a class="item" href="indentity.jsp">个人中心</a>
             <div class="right menu">

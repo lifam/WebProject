@@ -53,11 +53,8 @@
    //回复内容插入数据库
    if(request.getMethod().equalsIgnoreCase("post")){
         String fmt = "insert into comment(pageid,nickname,content) values('%s','%s','%s')";
-        String Sql = String.format(fmt,uid,nickname,request.getParameter("article"));
+        String Sql = String.format(fmt,uid,nickname,request.getParameter("comment"));
         int cnt = stmt.executeUpdate(Sql);
-
-        if(cnt>0)
-          out.print("insert successfully!");  
     }
 
    try{

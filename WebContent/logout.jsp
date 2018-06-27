@@ -39,8 +39,7 @@
 <html>
 <meta charset="utf-8">
 <head>
-    <title>Technique BBS!</title>
-    <link rel="icon" href="/LemonApp/media/logo.jpg"  type="image/jpg">
+    <title>Movie Circle!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="css/semantic.css">
@@ -65,9 +64,9 @@
     </style>
 </head>
 <body>
-    <div class="ui inverted large head main menu ">
+    <div class="ui inverted large head main menu "  style="background:url(img/background.jpg)">
         <div class="ui  container">
-            <div class="header item"><i class= "lemon icon"></i>Technique BBS</div>
+            <div class="header item"><i class= "lemon icon"></i>Movie Circle</div>
             <a href="index.jsp" class="item">主页</a>
             <a class="item" href="indentity.jsp">个人中心</a>
             <div class="right menu">
@@ -100,26 +99,8 @@
           <a  href="login.jsp" class="ui primary button" style="margin-top:10px;margin-left:75rem;width:100px;font:white" ><i class="write icon"></i>发帖</a>
     <% } %>
   </div>
-  <div class = "ui divider" style="margin-top:30px"></div>
-<!-- part I -->
-    <div class = "ui styled fluid accordion">
-      <div class="title"><i class="dropdown icon"></i>{{article.title}}</div>
-        <div class="content">
-          <p class = "transition hidden">
-            {{ article.get_content_as_markdown|safe }}
-          </p>
-      <p class = "transition hidden"><a href = "{% url 'article' article.slug %}">进入</a></p>
-    </div>
-    <div class = "ui styled fluid accordion">
-      <div class="title"><i class="dropdown icon"></i>{{article.title}}</div>
-        <div class="content">
-          <p class = "transition hidden">
-            {{ article.get_content_as_markdown|safe }}
-          </p>
-      <p class = "transition hidden"><a href = "{% url 'article' article.slug %}">进入</a></p>
-    </div>
-</div>
-<!-- End Part I -->
+<div class = "ui divider" style="margin-top:30px"></div>
+  <%=table%>
 </div>
 
 </body>

@@ -93,7 +93,7 @@ function submit() {
 			}
 		}
 		var search = "name=" + t1.value + "&password=" + t2.value + "&nickname=" + t3.value;
-		xmlhttp.open("post", "registerserver.jsp", true);
+		xmlhttp.open("post", "frame\\registerserver.jsp", true);
 		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		xmlhttp.send(search);
 	}

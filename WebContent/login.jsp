@@ -3,11 +3,11 @@
 <%@page import="com.mysql.cj.protocol.Resultset"%>
 <%@ page import = "java.security.MessageDigest" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" import = "java.util.*, java.sql.*,java.net.*,javax.servlet.http.Cookie"%>
+<jsp:include page="frame/head.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href="css/login.css">
 <script src="js/loginjs.js"></script>
-<jsp:include page="frame/head.jsp"></jsp:include>
 
-<body class="login_body">
+<body>
 	<div class = "content">
 		<div class = "login_main">
 			<div class = "login_main_header">

@@ -49,7 +49,7 @@
 <jsp:include page="frame/head.jsp"></jsp:include>
 
 
-  <div class ="ui main container">
+  <div class ="ui main container"  style="background-image:url("img/background.jpg");">
 	<div class = "ui grid">
     <% if(name!=""){ %>
       <a  href="write.jsp" class="ui primary button" style="margin-top:10px;margin-left:75rem;width:100px;font:white" ><i class="write icon"></i>发帖</a>
@@ -57,10 +57,8 @@
           <a  href="login.jsp" class="ui primary button" style="margin-top:10px;margin-left:75rem;width:100px;font:white" ><i class="icon edit"></i>发帖</a>
     <% } %>
   </div>
-  <div class = "ui divider" style="margin-top:30px"></div>
-<!-- part I -->
+<div class = "ui divider" style="margin-top:30px"></div>
     <%=table%>
-<!-- End Part I -->
 </div>
 
 </body>
