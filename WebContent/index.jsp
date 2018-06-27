@@ -12,7 +12,7 @@
    StringBuilder table = new StringBuilder("");
    String str1 = "<div class = \"ui styled fluid accordion\"><div class=\"title\"><i class=\"dropdown icon\"></i>";
    String str2 = "</div><div class=\"content\"><p class = \"transition hidden\">";
-   String fmt = "</p><p class = \"transition hidden\"><a href = \"page.jsp?nickname=%s\">进入</a></p></div></div>";
+   String fmt = "</p><p class = \"transition hidden\"><a href = \"page.jsp?uid=%s\">进入</a></p></div></div>";
    String str3 = "";
    for(Cookie cookie:cookies){
       if(cookie.getName().equals("name"))
@@ -33,7 +33,7 @@
        table.append(rs.getString("title"));
        table.append(str2);
        table.append(rs.getString("content"));
-       str3 = String.format(fmt,rs.getString("nickname"));
+       str3 = String.format(fmt,rs.getString("uid"));
        table.append(str3);
 	  }
 
@@ -54,7 +54,7 @@
     <% if(name!=""){ %>
       <a  href="write.jsp" class="ui primary button" style="margin-top:10px;margin-left:75rem;width:100px;font:white" ><i class="write icon"></i>发帖</a>
     <%} else{ %>
-          <a  href="login.jsp" class="ui primary button" style="margin-top:10px;margin-left:75rem;width:100px;font:white" ><i class="write icon"></i>发帖</a>
+          <a  href="login.jsp" class="ui primary button" style="margin-top:10px;margin-left:75rem;width:100px;font:white" ><i class="icon edit"></i>发帖</a>
     <% } %>
   </div>
   <div class = "ui divider" style="margin-top:30px"></div>

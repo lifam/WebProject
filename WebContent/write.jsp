@@ -109,7 +109,7 @@
 <!-- 		</div> -->
 
 
-		<button type="submit" class="ui primary button" style="margin-top:10px;margin-bottom:50px" ><i class="write icon"></i>发帖</button>
+		<button type="submit" class="ui primary button" style="margin-top:10px;margin-bottom:50px" ><i class="icon edit"></i>发帖</button>
 <!-- 		<button class="ui  button" style="margin-top:10px;margin-bottom:20px;" ><i class="folder  icon"></i>保存草稿</button>
 		<button class="ui  button" style="margin-top:10px;margin-bottom:20px;" ><i class="unhide icon"></i>预览</button>
 		<button class="ui  button" style="margin-top:10px;margin-bottom:20px;" ><i class="remove icon"></i>取消</button> -->
