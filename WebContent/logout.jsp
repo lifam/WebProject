@@ -10,7 +10,7 @@
    String user = "user";
    String pwd = "123";
    String name = "";
-
+   String nickname = "";
    StringBuilder table = new StringBuilder("");
    String str1 = "<div class = \"ui styled fluid accordion\"><div class=\"title\"><i class=\"dropdown icon\"></i>";
    String str2 = "</div><div class=\"content\"><p class = \"transition hidden\">";
@@ -33,7 +33,7 @@
     Connection con = DriverManager.getConnection(connectString, user, pwd);
     Statement stmt = con.createStatement();
 
-    String sql = "select * from bbs where sign = \"1\" LIMIT 10";
+    String sql = "select * from bbs";
     ResultSet rs = stmt.executeQuery(sql);
 
     while(rs.next()) {
@@ -54,7 +54,62 @@
    }
 
 %>
-<jsp:include page="frame/head.jsp"></jsp:include>
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+    <title>Movie Circle!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="css/semantic.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/semantic.js"></script>
+    <script>
+    $(document).ready(function() {
+        // 鼠标放到 dropdown 时显示下拉菜单，默认只有点击后才显示
+        $('.dropdown.item').dropdown({
+            on: 'hover'
+        });
+        $('.menu .item').tab();
+        $('.ui.accordion').accordion();
+        $('.ui.sticky').sticky({context: '#example1'});
+
+    });
+</script>
+    <style>
+    p.spec{
+      color:black;
+    }
+    </style>
+</head>
+<body style="background:url(img/background.jpg) no-repeat center center fixed">
+    <div class="ui inverted large head main menu ">
+        <div class="ui  container">
+            <div class="header item"><i class= "unhide icon"></i>Movie Circle</div>
+            <a href="index.jsp" class="item">主页</a>
+            <a class="item" href="indentity.jsp">个人中心</a>
+            <div class="right menu">
+                <div class="item">
+                    <div class="ui transparent inverted icon input">
+                        <i class="search icon"></i>
+                        <input type="text" placeholder="Search">
+                    </div>
+                </div>
+                <% if(name!=""){%>
+                   <div class="ui dropdown item" tabindex="0">
+                        Hi，<%=nickname%><i class="dropdown icon"></i>
+                        <div class="menu" tabindex="-1">
+                            <div class="item"><a href="logout.jsp"><p class="spec">退出登录</p></a></div>
+                        </div>
+                    </div>
+                <% }else{%>
+                    <a class="item" href="login.jsp">登录</a>
+                    <a class="item" href="register.jsp">注册</a>
+                <%}%>
+            </div>
+        </div>
+</div>
+
 
 <div class ="ui main container">
   <div class = "ui grid">

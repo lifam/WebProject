@@ -22,7 +22,6 @@
    String password_md5, warn = "";
    String sex = "";
    String description = "";
-   String major = "";
    String qq = "";
    String tel = "";
    String headimg = "head_image/" + name + ".png";
@@ -37,15 +36,14 @@
 	  if(request.getMethod().equalsIgnoreCase("post")){
 		  try{
 
-		  String fmt="UPDATE personal_info SET nickname='%s',sex='%s',description='%s',major='%s',qq='%s',tel='%s' where name='%s' ";
+		  String fmt="UPDATE personal_info SET nickname='%s',sex='%s',description='%s',qq='%s',tel='%s' where name='%s' ";
 		  nickname = request.getParameter("nickname");
 		  sex = request.getParameter("sex");
 		  description = request.getParameter("description");
-		  major = request.getParameter("major");
 		  qq = request.getParameter("qq");
 		  tel = request.getParameter("tel");
 		  headimg = "/head_image" + name + ".png";
-		  String sql = String.format(fmt,nickname,sex,description,major,qq,tel,name);
+		  String sql = String.format(fmt,nickname,sex,description,qq,tel,name);
 		  int cnt = stmt.executeUpdate(sql);
 		  if (cnt>0) msg = "Update Success!";
 		  stmt.close();
@@ -64,7 +62,6 @@
 	  			nickname = rs.getString("nickname");
 	  			sex = rs.getString("sex");
 	  			description = rs.getString("description");
-	  			major = rs.getString("major");
 	  			qq = rs.getString("qq");
 	  			tel = rs.getString("tel");
 	  		}
@@ -109,19 +106,20 @@
                 </div>
                 <div class="ui segment">
                     <div class="content">
-                        <h4 class="header"><i class="student icon"></i>专业:<%=major%></h4>
+                        <h4 class="header"><i class="comments icon"></i>QQ:<%=qq%></h4>
                     </div>
                 </div>
                 <div class="ui segment">
                     <div class="content">
-                        <h4 class="header"><i class="student icon"></i>QQ:<%=qq%></h4>
+                        <h4 class="header"><i class="call icon"></i>电话:<%=tel%></h4>
                     </div>
-                </div>
+                </div>  
                 <div class="ui segment">
                     <div class="content">
-                        <h4 class="header"><i class="student icon"></i>电话:<%=tel%></h4>
+                        <h4 class="header">个人简介:</h4>
+                        <%=description%>
                     </div>
-                </div>                
+                </div>              
             </div>
             <!--third column-->
             <div class="seven wide column">

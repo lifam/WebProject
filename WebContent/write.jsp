@@ -14,7 +14,7 @@
    //从cookie中获取当前用户名
    String name = "";
    Cookie[] cookies = request.getCookies();
-   String nickname = "bravo";
+   String nickname = "";
    for(Cookie cookie:cookies){
    		if(cookie.getName().equals("name"))
    		{
@@ -33,10 +33,12 @@
 
    	//获取nickname
    	try {
-	  	String sql = "SELECT * FROM personal_info where name = \"" + name + "\"";
+	  	String sql = "SELECT * FROM personal_info where name = '" + name + "'";
+	  	System.out.println(sql);
 	  	ResultSet rs = stmt.executeQuery(sql);
 	  	if(rs.next()){
 	  		nickname = rs.getString("nickname");
+			System.out.println(nickname);  		
 	  	}
 	}catch(Exception e) {
 	   	msg = e.getMessage();
@@ -49,7 +51,10 @@
 		  title = request.getParameter("title");
 		  content = request.getParameter("content");
 		  String sql = String.format(fmt,nickname,title,content);
+		  System.out.println(sql);
 		  int cnt = stmt.executeUpdate(sql);
+
+
 		  stmt.close();
 		  con.close();
 		}
@@ -86,7 +91,7 @@
 		    <div class="field">
 			 	<textarea name="content"></textarea>
 			</div>
-		<button type="submit" class="ui primary button" style="margin-top:10px;margin-bottom:50px" ><i class="icon edit"></i>发帖</button>
+		<button type="submit" class="ui primary button" style="margin-top:10px;margin-bottom:80px" ><i class="icon edit"></i>发帖</button>
 	</form>
 </div>
 <jsp:include page="frame/footer.jsp"></jsp:include>

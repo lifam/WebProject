@@ -34,7 +34,7 @@
 		   	  
 		   		sql = "insert into login(name, password_md5, nickname) values('" + name + "', '" + password_md5 +"', '" + nickname + "')";
 		   		
-		   		String fmt = "insert into personal_info(name,nickname,sex,focus,fans) values('%s','%s','male','0','0')";
+		   		String fmt = "insert into personal_info(name,nickname,sex) values('%s','%s','male')";
 
 				int cnt = stmt.executeUpdate(sql);
 

@@ -21,7 +21,6 @@
    String password_md5, warn = "";
    String sex = "";
    String description = "";
-   String major = "";
    String qq = "";
    String tel = "";
    String headimg = "head_image/" + name + ".png";
@@ -35,15 +34,14 @@
 	  Statement stmt = con.createStatement();
 	  if(request.getMethod().equalsIgnoreCase("post")){
 		  try{
-		  String fmt="UPDATE personal_info SET nickname='%s',sex='%s',description='%s',major='%s',qq='%s',tel='%s' where name='%s' ";
+		  String fmt="UPDATE personal_info SET nickname='%s',sex='%s',description='%s',qq='%s',tel='%s' where name='%s' ";
 		  nickname = request.getParameter("nickname");
 		  sex = request.getParameter("sex");
 		  description = request.getParameter("description");
-		  major = request.getParameter("major");
 		  qq = request.getParameter("qq");
 		  tel = request.getParameter("tel");
 		  headimg = "/head_image" + name + ".png";
-		  String sql = String.format(fmt,nickname,sex,description,major,qq,tel,name);
+		  String sql = String.format(fmt,nickname,sex,description,qq,tel,name);
 		  int cnt = stmt.executeUpdate(sql);
 		  if (cnt>0) msg = "Update Success!";
 		  stmt.close();
@@ -62,7 +60,6 @@
 	  			nickname = rs.getString("nickname");
 	  			sex = rs.getString("sex");
 	  			description = rs.getString("description");
-	  			major = rs.getString("major");
 	  			qq = rs.getString("qq");
 	  			tel = rs.getString("tel");
 	  		}
@@ -101,28 +98,27 @@
                     </p>
                     <p>
                         <h4 class="ui header">昵称:</h4>
-                        <i class="mail icon"></i>
+                        <i class="user icon"></i>
                         <div class="ui input">
                             <%=nickname%>
                         </div>
                     </p>
                     <p>
                         <h4 class="ui header">QQ:</h4>
-                        <i class="mail icon"></i>
+                        <i class="comments icon"></i>
                         <div class="ui input">
                             <input type="text" name="qq" value="<%=qq%>"/>
                         </div>
                     </p>
                     <p>
                         <h4 class="ui header">Tel:</h4>
-                        <i class="mail icon"></i>
+                        <i class="call icon"></i>
                         <div class="ui input">
                             <input type="text" name="tel" value="<%=tel%>"/>
                         </div>
                     </p>
                     <p>
                         <h4 class="ui header">个人简介:</h4>
-                        <i class="mail icon"></i>
                         <div class="ui input">
                             <textarea rows="5" cols="50" name="description"><%=description%></textarea> 
                         </div>
@@ -140,7 +136,6 @@
                     </a>
                 </div>
                 <form action="change_face" method="post" class="ui form" enctype="multipart/form-data">
-                    {% csrf_token %}
                       <div class="field">
                           <h5 class="ui header">更改头像:</h5>
                           <input type="file" name="face" placeholder="选择头像" required id="face" />

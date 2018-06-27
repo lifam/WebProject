@@ -19,7 +19,7 @@
    String str3 = "";
 
 
-   
+
    Cookie[] cookies = request.getCookies();
    for(Cookie cookie:cookies){
       if(cookie.getName().equals("name"))
@@ -32,7 +32,7 @@
 	  Connection con = DriverManager.getConnection(connectString, user, pwd);
 	  Statement stmt = con.createStatement();
 
-	  String sql = "select * from bbs where sign = \"1\" LIMIT 10";
+	  String sql = "select * from bbs";
 	  ResultSet rs = stmt.executeQuery(sql);
 
 	  while(rs.next()) {
@@ -59,7 +59,7 @@
   <div class ="ui main container" >
 	<div class = "ui grid">
     <% if(name!=""){ %>
-      <a  href="write.jsp" class="ui primary button" style="margin-top:10px;margin-left:75rem;width:100px;font:white" ><i class="write icon"></i>发帖</a>
+      <a  href="write.jsp" class="ui primary button" style="margin-top:10px;margin-left:75rem;width:100px;font:white" ><i class="icon edit"></i>发帖</a>
     <%} else{ %>
           <a  href="login.jsp" class="ui primary button" style="margin-top:10px;margin-left:75rem;width:100px;font:white" ><i class="icon edit"></i>发帖</a>
     <% } %>

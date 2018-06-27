@@ -65,9 +65,13 @@
 <body style="background:url(img/background.jpg) no-repeat center center fixed">
     <div class="ui inverted large head main menu ">
         <div class="ui  container">
-            <div class="header item"><i class= "lemon icon"></i>Movie Circle</div>
+            <div class="header item"><i class= "unhide icon"></i>Movie Circle</div>
             <a href="index.jsp" class="item">主页</a>
-            <a class="item" href="indentity.jsp">个人中心</a>
+            <%if(name!=""){%>
+              <a class="item" href="indentity.jsp">个人中心</a>
+            <%}else{%>
+              <a class="item" href="login.jsp">个人中心</a>
+            <%}%>
             <div class="right menu">
                 <div class="item">
                     <div class="ui transparent inverted icon input">
