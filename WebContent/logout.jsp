@@ -61,9 +61,9 @@
     <title>Movie Circle!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" href="css/semantic.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/semantic.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/MyCss.css">
+    <script src="js/main.js"></script>
+    <script src="js/MyJS.js"></script>
     <script>
     $(document).ready(function() {
         // 鼠标放到 dropdown 时显示下拉菜单，默认只有点击后才显示
@@ -87,7 +87,7 @@
         <div class="ui  container">
             <div class="header item"><i class= "unhide icon"></i>Movie Circle</div>
             <a href="index.jsp" class="item">主页</a>
-            <a class="item" href="indentity.jsp">个人中心</a>
+            <a class="item" href="identity.jsp">个人中心</a>
             <div class="right menu">
                 <div class="item">
                     <div class="ui transparent inverted icon input">

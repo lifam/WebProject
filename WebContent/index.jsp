@@ -27,30 +27,62 @@
         name = cookie.getValue();
       }
    }
+
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection con = DriverManager.getConnection(connectString, user, pwd);
+    Statement stmt = con.createStatement();
+    String content = "";
+    String title = "";
+	  String nickname = "";
+    try{
+      String sql = "SELECT * FROM personal_info where name = '" + name + "'";
+      System.out.println(sql);
+      ResultSet rs = stmt.executeQuery(sql);
+      if(rs.next()){
+        nickname = rs.getString("nickname");
+      //System.out.println(nickname);     
+      }
+    }catch(Exception e) {
+      msg = e.getMessage();
+    }
+    if(request.getMethod().equalsIgnoreCase("post")){
+    try{
+      String fmt1="insert into bbs(nickname,title,content) values('%s','%s','%s')";
+      title = request.getParameter("title");
+      content = request.getParameter("content");
+      String sql = String.format(fmt1,nickname,title,content);
+      //System.out.println(sql);
+      int cnt = stmt.executeUpdate(sql);
+
+    }
+    catch(Exception e){
+      msg = e.getMessage();
+    }
+    }
+
+
+
    try {	   
-	  Class.forName("com.mysql.jdbc.Driver");
-	  Connection con = DriverManager.getConnection(connectString, user, pwd);
-	  Statement stmt = con.createStatement();
+	   String sql = "select * from bbs";
+	   ResultSet rs = stmt.executeQuery(sql);
 
-	  String sql = "select * from bbs";
-	  ResultSet rs = stmt.executeQuery(sql);
-
-	  while(rs.next()) {
+	   while(rs.next()) {
        table.append(str1);
        table.append(rs.getString("title"));
        table.append(str2);
        table.append(rs.getString("content"));
        str3 = String.format(fmt,rs.getString("uid"));
        table.append(str3);
-	  }
-
-	  rs.close();
-	  stmt.close();
-	  con.close();
-   }
+	   }
+	     rs.close();
+	     stmt.close();
+	     con.close();
+    }
    catch(Exception e) {
-	   msg = e.getMessage();
+	     msg = e.getMessage();
    }
+
+
 %>
 
 <jsp:include page="frame/head.jsp"></jsp:include>

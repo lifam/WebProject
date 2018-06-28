@@ -14,7 +14,9 @@
    StringBuilder table = new StringBuilder(""); 
 
    //table 串
-   String fmt1 = "<div class = \"comment\"><a class = \"avatar\"><img src = \"#\"></a><div class = \"content\"><a class = \"author\">";
+   String fmt1 = "<div class = \"comment\"><a class = \"avatar\"><img src = \" ";
+   
+   String fmt6 = "\"></a><div class = \"content\"><a class = \"author\">";
    String fmt2 = "</a><div clas=\"metadata\"><i class = \"calendar icon\"></i><span class = \"date\"> ";
    String fmt3 = "</span></div><div class = \"text\" style = \"width:80rem\">";
    String fmt4 = "</div></div></div>";
@@ -38,11 +40,13 @@
    String nickname = "";
    String uid = request.getParameter("uid");
    //获取nickname
-   String getNickname = "select * from login where name = '" + name + "'" ;
+   String getNickname = "select * from personal_info where name = '" + name + "'" ;
    ResultSet rs = stmt.executeQuery(getNickname);
+   String headimg = "";
    if(rs.next())
    {
       nickname = rs.getString("nickname");
+      headimg = rs.getString("head_image");
    }
 
    String content = "";
@@ -52,8 +56,8 @@
 
    //回复内容插入数据库
    if(request.getMethod().equalsIgnoreCase("post")){
-        String fmt = "insert into comment(pageid,nickname,content) values('%s','%s','%s')";
-        String Sql = String.format(fmt,uid,nickname,request.getParameter("comment"));
+        String fmt = "insert into comment(pageid,nickname,content,head_image) values('%s','%s','%s','%s')";
+        String Sql = String.format(fmt,uid,nickname,request.getParameter("comment"),headimg);
         int cnt = stmt.executeUpdate(Sql);
     }
 
@@ -64,9 +68,20 @@
       if(rs.next()){
          content = rs.getString("content");
          title = rs.getString("title");
-         nickname = rs.getString("nickname");
+         nickname = rs.getString("nickname"); 
          datetime = rs.getString("date");
+
+         //取头像
+         sql = "select * from personal_info where nickname = '" + nickname + "'";
+         rs = stmt.executeQuery(sql);
+         if(rs.next())
+         {
+           headimg = rs.getString("head_image");
+         } 
+         headimg =  application.getRealPath("/head_image") + System.getProperty("file.separator") + headimg;
       }
+
+
 
       //获取comment信息
       fmt = "select * from comment where pageid = %s ";
@@ -74,12 +89,15 @@
       rs = stmt.executeQuery(sql);
       while(rs.next()){
           table.append(fmt1);
+          table.append(application.getRealPath("/head_image") + System.getProperty("file.separator") + rs.getString("head_image") );
+          table.append(fmt6);
           table.append(rs.getString("nickname"));
           table.append(fmt2);
           table.append(rs.getString("date"));
           table.append(fmt3);
           table.append(rs.getString("content"));
           table.append(fmt4);
+          //System.out.println(table);
       }
 
       rs.close();
@@ -104,7 +122,7 @@
          <div class = "ui comments">
             <div class = "comment">
             <a class = "avatar" >
-              <img src = " /LemonApp/media/{{ article.create_user.face }}">
+              <img src = "<%=headimg%>">
             </a>
             <div class = "content" >
               <a class = "author" ><%=nickname%></a>

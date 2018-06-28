@@ -40,7 +40,6 @@
 		  description = request.getParameter("description");
 		  qq = request.getParameter("qq");
 		  tel = request.getParameter("tel");
-		  headimg = "/head_image" + name + ".png";
 		  String sql = String.format(fmt,nickname,sex,description,qq,tel,name);
 		  int cnt = stmt.executeUpdate(sql);
 		  if (cnt>0) msg = "Update Success!";
@@ -62,6 +61,7 @@
 	  			description = rs.getString("description");
 	  			qq = rs.getString("qq");
 	  			tel = rs.getString("tel");
+          headimg = application.getRealPath("/head_image") + System.getProperty("file.separator") +  rs.getString("head_image");
 	  		}
 
 
@@ -72,6 +72,7 @@
 	  }
 
 %>
+
 <jsp:include page="frame/head.jsp"></jsp:include>
 
 
@@ -88,7 +89,7 @@
             <div class="six wide column">
                 <h2 class="ui header">基础信息</h2>
                 <div class="ui divider"></div>
-                <form action="personal-setting.jsp" method="post" class="ui large form">
+                <form action="identity.jsp" method="post" class="ui large form">
                     <p>
                         <h4 class="ui header">用户名:</h4>
                         <i class="user icon"></i>
@@ -132,15 +133,15 @@
             <div class="four wide column">
                 <div class="ui segment">
                     <a href="#" class="ui centered medium image">
-                        <img src="/LemonApp/media/{{ request.user.face }}">
+                        <img src="<%=headimg%>">
                     </a>
                 </div>
-                <form action="change_face" method="post" class="ui form" enctype="multipart/form-data">
+                <form action="uploadfile.jsp" method="post" class="ui form" enctype="multipart/form-data">
                       <div class="field">
                           <h5 class="ui header">更改头像:</h5>
                           <input type="file" name="face" placeholder="选择头像" required id="face" />
                       <button class="ui primary submit button" style="margin-top:10px;margin-left:90px">保存</button>
-                      <a class="ui button" href="/identity/">取消</a>
+                      <a class="ui button" href="#">取消</a>
                     </div>
                     <div class="ui error message"></div>
                 </form>

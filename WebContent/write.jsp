@@ -38,7 +38,7 @@
 	  	ResultSet rs = stmt.executeQuery(sql);
 	  	if(rs.next()){
 	  		nickname = rs.getString("nickname");
-			System.out.println(nickname);  		
+			//System.out.println(nickname);  		
 	  	}
 	}catch(Exception e) {
 	   	msg = e.getMessage();
@@ -51,7 +51,7 @@
 		  title = request.getParameter("title");
 		  content = request.getParameter("content");
 		  String sql = String.format(fmt,nickname,title,content);
-		  System.out.println(sql);
+		  //System.out.println(sql);
 		  int cnt = stmt.executeUpdate(sql);
 
 
@@ -76,7 +76,7 @@
 	  </div>
 	  	<div class = "ui divider" style="margin-top:40px">
 	  	</div>
-	  <form action="write.jsp" method="post">
+	  <form action="index.jsp" method="post">
 	  	<h3 class = "ui header">标题</h3>
 	  		<div class="ui input foucs" style= "width:80rem">
   				<input type="text" name="title" placeholder="标题"> 
